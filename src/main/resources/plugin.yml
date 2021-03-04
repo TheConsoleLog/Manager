@@ -1,0 +1,4 @@
+name: Manager
+version: ${project.version}
+main: com.theconsolelog.manager.Manager
+load: STARTUP
