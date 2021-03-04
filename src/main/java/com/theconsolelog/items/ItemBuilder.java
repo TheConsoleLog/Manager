@@ -13,7 +13,7 @@ import java.util.List;
 public class ItemBuilder {
 
 	private final ItemStack itemStack;
-	private final ItemMeta itemMeta;
+	protected ItemMeta itemMeta;
 
 	public ItemBuilder (Material material, String displayname) {
 		this.itemStack = new ItemStack (material);
@@ -24,6 +24,12 @@ public class ItemBuilder {
 
 	public ItemBuilder addEnchantment (Enchantment enchantment, int i, boolean b) {
 		this.itemMeta.addEnchant (enchantment, i, b);
+		return this;
+	}
+
+	// set color
+	public ItemBuilder setDurability (int durability) {
+		this.itemStack.setDurability ((short) durability);
 		return this;
 	}
 
