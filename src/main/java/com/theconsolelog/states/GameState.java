@@ -25,4 +25,6 @@ public class GameState {
 	public void addValues (List<Object> values) {
 		this.values.addAll (values);
 	}
+
+	public List<Object> getValues () { return this.values; }
 }
