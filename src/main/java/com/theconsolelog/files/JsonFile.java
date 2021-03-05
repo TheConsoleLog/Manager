@@ -20,6 +20,17 @@ public class JsonFile {
 		}
 	}
 
+	public JsonFile (String name, Plugin plugin, Object def) {
+		String folder = plugin.getDataFolder ().getPath ();
+		this.FILE = new File (folder, name + ".json");
+		if (! FILE.exists ()) {
+			try {
+				FILE.createNewFile ();
+				saveData (def);
+			} catch (IOException ignored) {}
+		}
+	}
+
 	public <T> void saveData (Object obj) throws IOException {
 		String json = GSON.toJson (obj);
 		Files.write (FILE.toPath (), json.getBytes ());
