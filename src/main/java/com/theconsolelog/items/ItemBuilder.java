@@ -27,22 +27,40 @@ public class ItemBuilder {
 		return this;
 	}
 
-	// set color
+	/**
+	 *
+	 * @param durability Set the durability, color or damage of an ItemStack
+	 * @return this
+	 */
 	public ItemBuilder setDurability (int durability) {
 		this.itemStack.setDurability ((short) durability);
 		return this;
 	}
 
+	/**
+	 *
+	 * @param list Set the lore of an ItemStack
+	 * @return this
+	 */
 	public ItemBuilder setLore (List<String> list) {
 		this.itemMeta.setLore (list);
 		return this;
 	}
 
+	/**
+	 *
+	 * @implNote makes the ItemStack unbreakable
+	 * @return this
+	 */
 	public ItemBuilder setUnbreakable () {
 		this.itemMeta.spigot ().setUnbreakable (true);
 		return this;
 	}
 
+	/**
+	 * @param amount Set the amount of the items. Default amount is 1
+	 * @return this
+	 */
 	public ItemBuilder setAmount (int amount) {
 		this.itemStack.setAmount (amount);
 		return this;
@@ -53,6 +71,10 @@ public class ItemBuilder {
 		return this;
 	}
 
+	/**
+	 *
+	 * @return ItemStack
+	 */
 	public ItemStack create () {
 		this.itemStack.setItemMeta (this.itemMeta);
 		return this.itemStack;
