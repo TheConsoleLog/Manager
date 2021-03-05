@@ -40,7 +40,7 @@ public class InventoryManager {
 		return this;
 	}
 
-	public InventoryManager addFromList (byte start, List<ItemStack> list) {
+	public InventoryManager addFromList (int start, List<ItemStack> list) {
 		for (byte i = 0; i < list.size (); i++) {
 			this.inventory.setItem ((i + start), list.get (i));
 		}

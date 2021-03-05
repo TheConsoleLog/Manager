@@ -16,8 +16,8 @@ public class StateManager {
 		this.gameStates.add (state);
 	}
 
-	public ArrayList<GameState> getStates () {
-		return (ArrayList<GameState>) this.gameStates;
+	public List<GameState> getStates () {
+		return this.gameStates;
 	}
 
 	public boolean isEmpty () {
