@@ -1,4 +1,4 @@
-package com.theconsolelog.sql;
+package com.theconsolelog.sql.async;
 
 import com.sun.rowset.CachedRowSetImpl;
 
@@ -8,12 +8,12 @@ import java.sql.*;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SqlData {
+public class AsyncSqlData {
 
 	private final HashMap<Integer, Object> parameter = new HashMap<> ();
 	private String query;
 
-	public SqlData (String query) {
+	public AsyncSqlData (String query) {
 		this.query = query;
 	}
 

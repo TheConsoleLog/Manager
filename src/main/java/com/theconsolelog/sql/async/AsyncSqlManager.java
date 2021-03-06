@@ -1,4 +1,4 @@
-package com.theconsolelog.sql;
+package com.theconsolelog.sql.async;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
@@ -10,12 +10,12 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
 
-public class SqlManager {
+public class AsyncSqlManager {
 
 	private final HikariDataSource hikariDataSource;
 	private final ExecutorService executorService = Executors.newFixedThreadPool (2);
 
-	public SqlManager (String host, String user, String password, String database, int port) {
+	public AsyncSqlManager (String host, String user, String password, String database, int port) {
 		HikariConfig config = new HikariConfig ();
 		config.setUsername (user);
 		config.setPassword (password);
@@ -24,15 +24,15 @@ public class SqlManager {
 		((ThreadPoolExecutor) executorService).setMaximumPoolSize (20);
 	}
 
-	public CachedRowSet executeQuery (SqlData sqlData) throws SQLException {
+	public CachedRowSet executeQuery (AsyncSqlData sqlData) throws SQLException {
 		return sqlData.executeQuery (hikariDataSource);
 	}
 
-	public CachedRowSet executeUpdate (SqlData sqlData) throws SQLException {
+	public CachedRowSet executeUpdate (AsyncSqlData sqlData) throws SQLException {
 		return sqlData.executeUpdate (hikariDataSource);
 	}
 
-	public CompletableFuture<CachedRowSet> executeQueryAsync (SqlData sqlData) {
+	public CompletableFuture<CachedRowSet> executeQueryAsync (AsyncSqlData sqlData) {
 		return CompletableFuture.supplyAsync (() -> {
 			try {
 				return executeQuery (sqlData);
@@ -42,7 +42,7 @@ public class SqlManager {
 		}, executorService);
 	}
 
-	public CompletableFuture<CachedRowSet> executeUpdateAsync (SqlData sqlData) {
+	public CompletableFuture<CachedRowSet> executeUpdateAsync (AsyncSqlData sqlData) {
 		return CompletableFuture.supplyAsync (() -> {
 			try {
 				return executeUpdate (sqlData);
