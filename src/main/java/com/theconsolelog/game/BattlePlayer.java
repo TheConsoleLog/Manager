@@ -1,17 +1,21 @@
 package com.theconsolelog.game;
-
+import lombok.Getter;
+import lombok.Setter;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
 public class BattlePlayer {
 
-	private final Player player;
+	@Getter @Setter
+	private Player player;
 	private boolean vulnerable;
 
 	public BattlePlayer (Player player) {
 		this.player = player;
 		this.vulnerable = true;
 	}
+
+	public void sendMessage (String message) { this.player.sendMessage (message); }
 
 	public void setVulnerable (boolean vulnerable) {
 		this.vulnerable = vulnerable;
