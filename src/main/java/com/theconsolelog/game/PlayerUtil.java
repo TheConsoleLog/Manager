@@ -4,13 +4,13 @@ import lombok.Setter;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
-public class BattlePlayer {
+public class PlayerUtil {
 
 	@Getter @Setter
 	private Player player;
 	private boolean vulnerable;
 
-	public BattlePlayer (Player player) {
+	public PlayerUtil (Player player) {
 		this.player = player;
 		this.vulnerable = true;
 	}
