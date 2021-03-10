@@ -7,7 +7,7 @@ public class SyncSqlManager {
 	private static Connection connection;
 
 	public SyncSqlManager (String host, String username, String password, String database, int port) throws SQLException {
-		if(!connection.isClosed () || connection != null) return;
+		if(connection != null) return;
 		connection = DriverManager.getConnection ("jdbc:mysql://" + host + ":" + port + "/" + database, username, password);
 	}
 
